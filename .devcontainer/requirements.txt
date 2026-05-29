@@ -1,0 +1,13 @@
+pybaseball
+lightgbm
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+umap-learn
+hdbscan
+shap
+jupyter
+ipykernel
