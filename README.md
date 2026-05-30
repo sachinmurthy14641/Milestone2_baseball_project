@@ -15,21 +15,26 @@ This project explores pitch classification using Statcast ball-flight data retri
 ## Planned Modeling Approaches
 
 ### Supervised
+
 - Baseline: Logistic Regression / Random Forest
 - Comparison models: Gradient Boosting (XGBoost/LightGBM), SVM, Neural Net (TBD)
 - Feature set experiments: movement-only, velocity + movement, full Statcast feature set
 
 ### Unsupervised
+
 - K-Means and/or Gaussian Mixture Models across 15–20 clusters
 - Dimensionality reduction for visualization (PCA, UMAP)
 - Analysis of how clusters map to (and diverge from) official pitch types
 
 ## Repository Structure
 
-```
+```text
 ├── data/               # Raw and processed data files (not tracked in git)
+├── docs/               # Project documentation and writeups
 ├── notebooks/          # Exploratory analysis and modeling notebooks
-├── src/                # Reusable helper modules
+│   └── 01_eda.ipynb    # Statcast EDA — distributions, movement profiles, feature correlations
+├── src/                # Reusable modules
+│   └── data_pull.py    # Parallelized Statcast pull via Modal
 ├── results/            # Model outputs, metrics, figures
 └── README.md
 ```
@@ -37,9 +42,34 @@ This project explores pitch classification using Statcast ball-flight data retri
 ## Setup
 
 ```bash
-pip install pybaseball scikit-learn xgboost lightgbm umap-learn pandas matplotlib seaborn
+# Create virtual environment
+python -m venv .venv
+.venv\Scripts\activate      # Windows
+source .venv/bin/activate   # macOS/Linux
+
+pip install pybaseball scikit-learn xgboost lightgbm umap-learn pandas matplotlib seaborn jupyter ipykernel modal
+
+# Register Jupyter kernel
+python -m ipykernel install --user --name baseball-pitch --display-name "Python (baseball-pitch)"
+```
+
+### Data Pull (via Modal)
+
+```bash
+# Pull one season (~720k pitches, parallelized by month)
+modal run src/data_pull.py --seasons 2023
+
+# Pull multiple seasons
+modal run src/data_pull.py --seasons 2021,2022,2023
 ```
 
 ## Status
 
-Project is in early scoping phase. Data acquisition and EDA are the next steps.
+- [x] Project scoping and proposal
+- [x] Repository setup
+- [x] Data acquisition — 2023 Statcast season (720k pitches, 118 features)
+- [x] Exploratory data analysis (`notebooks/01_eda.ipynb`)
+- [ ] Feature engineering and preprocessing
+- [ ] Supervised model development and comparison
+- [ ] Unsupervised clustering and analysis
+- [ ] Final writeup
