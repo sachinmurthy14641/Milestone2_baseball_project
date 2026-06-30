@@ -100,6 +100,7 @@ Thumbs.db
 data/raw/
 data/processed/
 *.csv
+!data/*sample*.csv
 *.feather
 *.pkl
 *.h5
