@@ -83,7 +83,7 @@ Data lands in `data/statcast_<season>_raw.parquet` and is tracked via Git LFS so
 - [x] Repository setup
 - [x] Data acquisition — 2023, 2024, 2025 Statcast seasons (~2.16M pitches, 118 features), parallelized via Modal
 - [x] Exploratory data analysis (`notebooks/01_eda.ipynb`)
-- [ ] Feature engineering and preprocessing
-- [ ] Supervised model development and comparison — in progress (`notebooks/mackinnon_supervised*.ipynb`)
-- [ ] Unsupervised clustering and analysis — in progress (`notebooks/asad_unsupervised.ipynb`)
-- [ ] Final writeup
+- [x] Feature engineering and preprocessing
+- [x] Supervised model development and comparison — in progress (`notebooks/mackinnon_supervised*.ipynb`)
+- [x] Unsupervised clustering and analysis — in progress (`notebooks/asad_unsupervised.ipynb`)
+- [x] Final writeup
