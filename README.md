@@ -10,7 +10,7 @@ This project explores pitch classification using Statcast ball-flight data retri
 
 ## Data Source
 
-- **pybaseball / Statcast**: pitch-level data including velocity, spin rate, movement (induced/total), release point, extension, and plate location.
+- **[pybaseball](https://github.com/jldbc/pybaseball) / Statcast**: pitch-level data including velocity, spin rate, movement (induced/total), release point, extension, and plate location.
 - **Seasons collected**: 2023 (720,684 pitches), 2024 (731,904 pitches), 2025 (711,897 pitches) — ~2.16M pitches combined, stored in `data/` via Git LFS.
 - **Ingestion pipeline**: data is pulled with a parallelized [Modal](https://modal.com) pipeline (`src/data_pull.py`) that splits each season into monthly chunks and fetches them concurrently — about 8x faster than a sequential `pybaseball` pull (~30s vs ~4min per season). See [Data Pull](#data-pull-via-modal) below.
 
